@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유튜브포함 레이아웃</title>
+    <style>
+        @font-face {
+    font-family: 'HSYuji-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+        @font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+        *{margin: 0; padding: 0;}
+        li{list-style: none;}
+        a{
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        html, body{
+            color: #333;
+            font-family: 'HSYuji-Regular';
+        }
+        /* 이미지가 왼쪽에 있는 레이아웃 */
+        .left{
+            width: 1600px;
+            margin: 100px auto;
+        }
+        .left .top{
+            display: flex;
+            /* figure와 div가 가로로 나열 */
+            height: 500px;
+            align-items: center;
+            /* 가로로 나열되어 있는 요소들을 수직 정렬 시켜주는 것 : 가운데 정렬 */
+            margin-bottom: 50px;
+        }
+        .left .top figure{
+            width: 60%;
+            height: 100%;
+            /* 부모가 가지고 있는 height 값을 가득 채우기 위해 적어줘야 함 */
+        }
+        .left .top figure img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .left .top div{
+            width: 40%;
+            padding: 0 60px;
+            /* 가로값이 측정 된 상태에서 패딩을 적용 시키면 가로값+패딩값(600+120=720)으로 결과값이 나옴 */
+            /* 패딩값을 포함해서 가로값을 지정 하는 것 : box-sizing:border-box */
+            box-sizing: border-box;
+        }
+        /* 오른쪽에 있는 텍스트 div */
+
+        /* 유튜브 스타일 */
+        .bottom div{
+            width: 100%;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .bottom div iframe{
+            position: absolute;          
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .left .top div h4{
+            /* 글자크기 25px */
+            font-size: 25px;
+        }
+        .left .top div p{
+            /* 글자크기 16px
+            글자컬러 #7D7D7D */
+            font-size: 16px;
+            color: #7d7d7d;
+        }
+        .left .top div dl{
+            /* dt와 dd 가로정렬 flex 사용 */
+            display: flex;
+        }
+        .left .top div dl dt{
+            /* 가로값 120px, 글자두께 두껍게 */
+            width: 120px;
+            font-weight: bold;
+        }
+        .left .top div .info{
+            /* 글자크기 18px, 윗쪽과의 간격 30px, 아랫쪽과의 간격 40px */
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+        .left .top div ul{
+            display: flex;
+        }
+        .left .top div ul li{
+            width: 130px;
+            height: 45px;
+            border: 1px solid #333;
+            text-align: center;
+            line-height: 45px;
+            margin-right: 23px;
+        }
+        .left .top ul li:first-child{
+            background-color: rgb(230, 178, 214);
+            border: 1px solid rgb(230, 178, 214);
+        }
+        .left .top ul li:first-child a{
+            color: #fff;
+        }
+        .left .top ul li:first-child:hover{
+            background-color: rgb(230, 178, 214);
+            box-shadow: 0 5px 15px rgb(243, 86, 152);
+        }
+
+        /* 그래픽 디자인 */
+        .g_design{
+            text-align: center;
+            background: url('images/cont_bg.jpg') center center / cover no-repeat;
+            padding: 100px 0;
+            background-attachment: fixed;
+        }
+        .g_design h3{
+            font-size: 50px;
+        }
+        .g_design ul{
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .g_design ul li{
+            margin: 0 17px;
+        }
+        .g_design ul li a{
+            font-family: 'SDSamliphopangche_Outline';
+        }
+        .g_design div{
+            width: 1600px;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .g_design div figure{
+            width: 32%;
+            height: 335px;
+            margin: 20px 0;
+        }
+        .g_design div figure img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* footer 푸터 */
+        footer{
+            background-color: #333;
+            padding: 50px 0;
+        }
+        footer dl{
+            width: 300px;
+            display: flex;
+            /* justify-content: space-between; */
+            margin: 7px auto;
+        }
+        footer dl dt{
+            color: #fff;
+            width: 150px;
+        }
+        footer dl dd{
+            color: #fff;
+        }
+        footer dl dd a{
+            color: #fff;
+        }
+        footer p{
+            color: #fff;
+            text-align: center;
+        }
+        footer p a{
+            color: #fff;
+        }
+        footer .copy{
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 반응형으로 제작 media screen */
+        /* 
+        기본적인 화면 해상도 크기 : 1920(가로)
+        태블릿으로 넘어가는 크기 1024(보통 상위 메뉴들이 접는 아이콘으로 변화 되는 시점의 크기) 
+        모바일 + 태블릿 767px
+        모바일 480~320px
+        */
+
+        /* 컨테이너 중심축 가로크기 100%(1600 이하일 때 부터 변화) */
+        @media screen and (max-width: 1600px) {
+            .left{
+                width: 100%;
+            }
+            .g_design div{
+                width: 95%;
+                margin: 0 auto;
+            }
+        } /* 1600 */
+
+        /* 해상도 크기 1024px 이하일 때 부터 스타일 변화 */
+        @media screen and (max-width: 1024px){
+            .left:nth-child(2) .top div{
+                order: 1;
+                /* order : flex 자식 요소의 순번을 변경, 숫자가 낮으면 앞으로 배치 */
+            } /* 두번째꺼 글자가 ->사진 -> 영상 순서여서 사진->영상->글자 순서로 바꾸는 것*/
+            .left .top {
+                flex-wrap: wrap;
+                height: auto;
+            }
+            .left .top figure {
+                width: 95%;
+                margin: 0 auto;
+            }
+            .left .top div{
+                width: 100%;
+                padding: 0 20px;
+            }
+        } /*1024*/
+
+        @media screen and (max-width: 767px) {
+            .g_design div figure{
+                width: 49%;
+            }         
+        } /*767*/
+        @media screen and (max-width: 414px) {
+            .g_design div figure{
+                width: 100%;
+                margin: 10px 0;
+            }
+        } /*414*/
+    </style>
+</head>
+<body>
+    <section class="left">
+        <div class="top">
+            <figure>
+                <img src="images/bg01.jpg" alt="노트북 향수병"/>
+            </figure>
+            <div>
+                <h4>바버, 오늘과 과거를 잇다.</h4>
+                <p class="txt">연출, 촬영, 편집, 특수효과</p>
+                <dl>
+                    <dt>프로그램</dt>
+                    <dd>pr</dd>
+                </dl>
+                <dl>
+                    <dt>러닝타임</dt>
+                    <dd>2m 15s</dd>
+                </dl>
+                <dl>
+                        <dt>BGM</dt>
+                        <dd>브금대통령 - 여름밤의 꿈</dd>
+                </dl>
+                    <p class="info">제작목적 및 콘셉트 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum eveniet voluptatem amet fugit alias ex unde nisi beatae, tempore fugiat optio, ut quia nobis iste repellendus mollitia autem iusto nulla!</p>
+                <ul>
+                    <li><a href="#">영상보기</a></li>
+                    <li><a href="#">기획서보기</a></li>
+                </ul>
+            </div>
+        </div> <!-- .top end-->
+        <div class="bottom">
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hg5ZCOLCvdE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div><!-- .class bottom end-->
+    </section> <!-- .left-->
+    <section class="left">
+        <div class="top">
+            <div>
+                <h4>바버, 오늘과 과거를 잇다.</h4>
+                <p class="txt">연출, 촬영, 편집, 특수효과</p>
+                <dl>
+                    <dt>프로그램</dt>
+                    <dd>pr</dd>
+                </dl>
+                <dl>
+                    <dt>러닝타임</dt>
+                    <dd>2m 15s</dd>
+                </dl>
+                <dl>
+                        <dt>BGM</dt>
+                        <dd>브금대통령 - 여름밤의 꿈</dd>
+                </dl>
+                    <p class="info">제작목적 및 콘셉트 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum eveniet voluptatem amet fugit alias ex unde nisi beatae, tempore fugiat optio, ut quia nobis iste repellendus mollitia autem iusto nulla!</p>
+                <ul>
+                    <li><a href="#">영상보기</a></li>
+                    <li><a href="#">기획서보기</a></li>
+                </ul>
+            </div>
+            <figure>
+                <img src="images/bg01.jpg" alt="노트북 향수병"/>
+            </figure>
+        </div> <!-- .top end-->
+        <div class="bottom">
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hg5ZCOLCvdE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div><!-- .class bottom end -->
+    </section> <!-- .left -->
+
+    <!-- 그래픽 디자인, 시각디자인 -->
+    <section class="g_design">
+        <h3>GRAPHIC DESIGN</h3>
+        <ul>
+            <li><a href="#">카테고리</a></li>
+            <li><a href="#">BI/CI디자인</a></li>
+            <li><a href="#">시안제작</a></li>
+            <li><a href="#">카테고리</a></li>
+        </ul>
+        <div>
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure><!-- 1 -->
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure><!-- 2 -->
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure><!-- 3 -->
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure><!-- 4 -->
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure><!-- 5 -->
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure><!-- 6 -->
+        </div>
+    </section><!-- .g_design end-->
+    <footer>
+        <dl>
+            <dt>연락처</dt>
+            <dd><a href="tel:010.1234.5678">010.1234.5678</a></dd>
+        </dl>
+        <dl>
+            <dt>카카오톡 아이디</dt>
+            <dd>카카오톡 아이디명</dd>
+        </dl>
+        <p><a href="#">이력서 다운</a></p>
+        <P class="copy">COPYRIGHT 2022 LEEHEIN. ALL RIGTHS RESERVERD</P>
+    </footer>
+</body>
+</html>
